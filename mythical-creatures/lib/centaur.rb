@@ -1,87 +1,63 @@
 class Centaur
-  attr_reader :name, :breed, :cranky, :standing, :action_count, :laying, :sick
-  attr_writer :cranky, :standing, :action_count, :laying, :sick
-  def initialize(name, breed, cranky: false, standing: true, action_count: 0)
+  attr_reader :name, :breed
+  def initialize(name, breed = "Palomino")
     @name = name
     @breed = breed
-    @cranky = cranky
-    @standing = standing
-    @action_count = action_count
-    @laying = laying
+    @cranky = false
+    @standing = true
+    @action_count = 0
     @sick = false
   end
 
   def shoot
-    self.action_count += 1
-    if action_count >= 3
-      self.cranky = true
-    end
-
-    if self.cranky || self.laying
-      "NO!"
-    else
-      "Twang!!!"
-    end
+    @action_count += 1
+    @cranky = true if @action_count >= 3
+    return "NO!" if @cranky || !@standing
+    "Twang!!!"
   end
 
   def run
-    self.action_count += 1
-    if action_count >= 3
-      self.cranky = true
-    end
-
-    if self.cranky || self.laying
-      "NO!"
-    else
-      "Clop clop clop clop!!!"
-    end
+    @action_count += 1
+    @cranky = true if @action_count >= 3
+    return "NO!" if @cranky || !@standing
+    "Clop clop clop clop!!!"
   end
 
   def cranky?
-    self.cranky
-  end
-
-  def standing?
-    self.standing
-  end
-
-  def laying?
-    self.laying
-  end
-
-  def lay_down
-    self.standing = false
-    self.laying = true
-  end
-
-  def stand_up
-    self.standing = true
-    self.laying = false
-  end
-
-  def sleep
-    if self.standing
-      "NO!"
-    else
-      self.action_count = 0
-      self.cranky = false
-    end
+    @cranky
   end
 
   def sick?
-    self.sick
+    @sick
+  end
+
+  def standing?
+    @standing
+  end
+
+  def laying?
+    !@standing
+  end
+
+  def lay_down
+    @standing = false
+  end
+
+  def stand_up
+    @standing = true
+  end
+
+  def sleep
+    return "NO!" if @standing
+    @action_count = 0
+    @cranky = false
   end
 
   def drink_potion
-    if action_count == 0
-      self.sick = true
-    elsif self.standing
-      self.action_count = 0
-      self.cranky = false
-    elsif !self.standing
-      "NO!"
-    end
+    return "NO!" if !@standing
+    return @sick = true if !@cranky
+    @cranky = false
+    @action_count = 0
   end
-
 
 end
