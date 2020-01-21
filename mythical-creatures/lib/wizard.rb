@@ -1,32 +1,27 @@
 class Wizard
   attr_reader :name, :bearded, :rested, :spell_count
-  attr_writer :rested, :spell_count
-  def initialize(name, bearded: true, rested: true)
+  def initialize(name, bearded: true)
     @name = name
     @bearded = bearded
-    @rested = rested
+    @rested = true
     @spell_count = 0
   end
 
   def bearded?
-    self.bearded
+    bearded
   end
 
-  def incantation(power)
-    "sudo #{power}"
+  def incantation(command)
+    "sudo #{command}"
   end
 
   def rested?
-    if self.spell_count < 3
-      self.rested = true
-    else
-      self.rested = false
-    end
-
+    rested
   end
 
   def cast(spell)
-    self.spell_count += 1
+    @spell_count += 1
+    return @rested = false if spell_count >= 3
     "#{spell.upcase}!"
   end
 
