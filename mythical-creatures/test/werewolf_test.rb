@@ -64,45 +64,42 @@ class WerewolfTest < Minitest::Test
   end
 
   class Victim
-    attr_accessor :name, :status
-    def initialize(name, status = "alive")
-      @name = name
-      @status = status
+    attr_accessor :status
+    def initialize
+      @status = :alive
     end
   end
 
   def test_consumes_a_victim
-    werewolf = Werewolf.new("Jesse", "London")
-    guy = Victim.new("Mike")
+    werewolf = Werewolf.new("Mel", "New York")
+    victim = Victim.new
     werewolf.change!
-    werewolf.consume!(guy)
-    assert_equal 1, werewolf.belly.count
+    assert_equal "Nom Nom Nom", werewolf.consume!(victim)
   end
 
   def test_cannot_consume_victim_if_in_human_form
-    werewolf = Werewolf.new("Jesse", "London")
-    guy = Victim.new("Mike")
-    werewolf.consume!(guy)
-    assert_equal 0, werewolf.belly.count
+    werewolf = Werewolf.new("Mel", "New York")
+    victim = Victim.new
+    assert_equal "I'm not gonna eat that guy", werewolf.consume!(victim)
     werewolf.change!
-    werewolf.consume!(guy)
-    assert_equal 1, werewolf.belly.count
+    assert_equal "Nom Nom Nom", werewolf.consume!(victim)
   end
 
   def test_a_werewolf_who_has_consumed_a_victim_is_no_longer_hungry
-    werewolf = Werewolf.new("Jesse", "London")
-    guy = Victim.new("Mike")
+    werewolf = Werewolf.new("Mel", "New York")
+    victim = Victim.new
     werewolf.change!
-    werewolf.consume!(guy)
+    werewolf.consume!(victim)
     refute werewolf.hungry?
+
   end
 
   def test_a_werewolf_who_has_consumed_a_victim_makes_the_victim_dead
-    werewolf = Werewolf.new("Jesse", "London")
-    guy = Victim.new("Mike")
+    werewolf = Werewolf.new("Mel", "New York")
+    victim = Victim.new
     werewolf.change!
-    werewolf.consume!(guy)
-    assert_equal "dead", guy.status
+    werewolf.consume!(victim)
+    assert_equal "dead", victim.status
 
   end
 
