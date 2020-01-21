@@ -50,10 +50,9 @@ class WizardTest < Minitest::Test
 
   def test_gets_tired_after_casting_three_spells
     wizard = Wizard.new("Calvin")
-    assert_equal "LEVITATE TRUCK!", wizard.cast("levitate truck")
-    assert_equal "SUPER STRENGTH!", wizard.cast("super strength")
+    2.times { wizard.cast("tell dad joke") }  
     assert wizard.rested?
-    assert_equal "THROW SHADE!", wizard.cast("throw shade")
+    wizard.cast("throw shade")
     refute wizard.rested?
     # create wizard
     # casts spell twice
