@@ -13,12 +13,8 @@ class Dragon
   end
 
   def eat
-    self.meal += 1
-    if self.meal == 3
-      self.hungry = false
-    else
-      self.hungry = true
-    end
+    @meal += 1
+    @hungry = false if meal >= 3
   end
 
 end
