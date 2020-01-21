@@ -1,49 +1,37 @@
 class Werewolf
-  attr_reader :name, :location, :human, :wolf, :hungry, :belly
-  attr_writer :location, :human, :wolf, :hungry, :belly
-  def initialize(name, location="unknown", belly = [], human: true, wolf: false, hungry: false )
+  attr_reader :name, :location, :human, :hungry
+  def initialize(name, location = "Cave")
     @name = name
     @location = location
-    @human = human
-    @wolf = wolf
-    @hungry = hungry
-    @belly = belly
+    @human = true
+    @hungry = false
   end
 
   def human?
-    self.human
+    human
   end
 
   def change!
-    self.human = !self.human
-    self.wolf = !self.wolf
+    @human = !human
+    @hungry = !hungry
   end
 
   def wolf?
-    self.wolf
+    !human
   end
 
   def hungry?
-    # self.hungry = !self.human
-    if self.human
-      false
-    elsif self.wolf
-      if self.belly.count == 0
-        true
-      else
-        false
-      end
-    end
+    hungry
   end
 
-  def consume!(person)
-    if self.human
-      "People don't eat people"
-    elsif self.wolf
-      person.status = "dead"
-      self.belly << person
+  def consume!(victim)
+    if human
+      "I'm not gonna eat that guy"
+    elsif !human
+      victim.status = "dead"
+      @hungry = false
+      "Nom Nom Nom"
     end
-
   end
 
 end
