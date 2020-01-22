@@ -33,8 +33,8 @@ class MapPatternTest < Minitest::Test
   def test_3
     numbers = [1, 2, 3, 4, 5]
     doubles = []
-    numbers.each do |number|
-      # Your Code Here
+      numbers.each do |number|
+      doubles << number * 2
     end
     assert_equal [2, 4, 6, 8, 10], doubles
   end
@@ -48,8 +48,9 @@ class MapPatternTest < Minitest::Test
       five: 5
     }
     doubles = {}
+
     numbers.each do |name, number|
-      # Your Code Here
+      doubles[name] = number * 2
     end
     expected = {
       one: 2,
@@ -64,8 +65,9 @@ class MapPatternTest < Minitest::Test
   def test_5
     numbers = [1, 2, 3, 4, 5]
     squares = []
-    # Your Code Here
-
+  numbers.each do |num|
+    squares << num**2
+  end
     assert_equal [1, 4, 9, 16, 25], squares
   end
 
@@ -78,7 +80,10 @@ class MapPatternTest < Minitest::Test
       five: 5
     }
     squares = {}
-    # Your Code Here
+
+    numbers.each do |key, value|
+      squares[key] = value ** 2
+    end
 
     expected = {
       one: 1,
@@ -92,7 +97,10 @@ class MapPatternTest < Minitest::Test
 
   def test_7
     names = ["alice", "bob", "charlie", "david", "eve"]
-    #Your Code Here
+    lengths = []
+    names.each do |name|
+      lengths << name.length
+    end
 
     assert_equal [5, 3, 7, 5, 3], lengths
   end
@@ -105,7 +113,11 @@ class MapPatternTest < Minitest::Test
       uncle: "david",
       sister: "eve"
     }
-    #Your Code Here
+    lengths = {}
+
+    family.each do |title, name|
+      lengths[title] = name.length
+    end
 
     expected = {
       mother: 5,
@@ -119,7 +131,10 @@ class MapPatternTest < Minitest::Test
 
   def test_9
     names = ["alice", "bob", "charlie", "david", "eve"]
-    #Your Code Here
+    backwards = []
+    names.each do |name|
+      backwards << name.reverse
+    end
 
     assert_equal ["ecila", "bob", "eilrahc", "divad", "eve"], backwards
   end
@@ -132,8 +147,12 @@ class MapPatternTest < Minitest::Test
       uncle: "david",
       sister: "eve"
     }
-    #Your Code Here
-    
+    backwards = {}
+
+    family.each do |title, name|
+      backwards[title] = name.reverse
+    end
+
     expected = {
       mother: "ecila",
       father: "bob",
