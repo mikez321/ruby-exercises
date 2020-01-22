@@ -87,9 +87,13 @@ class FindPatternTest < Minitest::Test
     }
     multiple_of_three = nil
 <<<<<<< HEAD
+<<<<<<< HEAD
     ages.each do |name, age|
       return multiple_of_three = name if age % 3 == 0
     end
+=======
+    # Your Code Here
+>>>>>>> da5887e... Fix unexpected end error
 =======
     # Your Code Here
 >>>>>>> da5887e... Fix unexpected end error
