@@ -86,9 +86,13 @@ class FindPatternTest < Minitest::Test
       miguel: 50
     }
     multiple_of_three = nil
+<<<<<<< HEAD
     ages.each do |name, age|
       return multiple_of_three = name if age % 3 == 0
     end
+=======
+    # Your Code Here
+>>>>>>> da5887e... Fix unexpected end error
 
     assert_equal :abdi, multiple_of_three
   end
