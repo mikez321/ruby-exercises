@@ -28,17 +28,15 @@ class AllPatternTest < Minitest::Test
   end
 
   def test_3
-    skip
     words = ["love", "hate", "fire", "bird", "call"]
     all_four_letters = true
     words.each do |word|
-      # Your Code Here
+      all_four_letters = false if word.length != 4
     end
     assert_equal true, all_four_letters
   end
 
   def test_4
-    skip
     words = {
       one: "love",
       two: "hate",
@@ -48,43 +46,49 @@ class AllPatternTest < Minitest::Test
     }
     all_four_letters = true
     words.each do |position, word|
-      # Your Code Here
+      all_four_letters = true unless word.length != 4
     end
     assert_equal true, all_four_letters
   end
 
   def test_5
-    skip
     statuses = [:busy, :busy, :busy]
     all_busy = true
-    # Your Code Here
+    statuses.each do |status|
+      if status != :busy
+        all_busy = false
+      end
+    end
 
     assert_equal true, all_busy
   end
 
   def test_6
-    skip
     friend_status = {
       "Megan" => :busy,
       "Sarah" => :busy,
       "Duncan" => :busy,
     }
     all_busy = true
-    # Your Code Here
+    friend_status.each do |friend, status|
+      all_busy = true unless status != :busy
+    end
 
     assert_equal true, all_busy
   end
 
   def test_7
-    skip
     zip_codes = [94381, 831, 50009, 36232, 8992, 89999, 11110]
-    # Your Code Here
+    all_five_digits = true
+
+    zip_codes.each do |zip|
+      return all_five_digits = true unless zip.to_s.length != 5
+    end
 
     assert_equal false, all_five_digits
   end
 
   def test_8
-    skip
     zip_codes = {
       "Megan" => 94381,
       "Sarah" => 831,
@@ -94,27 +98,35 @@ class AllPatternTest < Minitest::Test
       "Cameron" => 89999,
       "Joshua" => 11110
     }
-    # Your Code Here
+    all_five_digits = true
+
+    zip_codes.each do |name, zip|
+      return false unless zip.to_s.length == 5
+    end
 
     assert_equal false, all_five_digits
   end
 
   def test_9
-    skip
     snacks = ["GARLIC PLANTAINS", "SNICKERDOODLES", "Pretzels"]
-    # Your Code Here
+    all_caps = true
+    snacks.each do |snack|
+      all_caps = false if snack != snack.upcase
+    end
 
     assert_equal false, all_caps
   end
 
   def test_10
-    skip
     snacks = {
       savory: "GARLIC PLANTAINS",
       sweet: "SNICKERDOODLES",
       salty: "Pretzels"
     }
-    # Your Code Here
+    all_caps = false
+    snacks.each do |style, snack|
+      return all_caps = true if snack == snack.upcase
+    end
 
     assert_equal false, all_caps
   end
