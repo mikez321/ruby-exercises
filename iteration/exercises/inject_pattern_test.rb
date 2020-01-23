@@ -32,6 +32,7 @@ class InjectPatternTest < Minitest::Test
   end
 
   def test_3
+    skip
     numbers = [2, 3, 5, 7]
     # Iterate over the numbers array defined above
     # to find the product of all the numbers
@@ -44,6 +45,7 @@ class InjectPatternTest < Minitest::Test
   end
 
   def test_4
+    skip
     scrabble_score = {
       letter_total: 23,
       word_muliplier: 3,
@@ -60,6 +62,7 @@ class InjectPatternTest < Minitest::Test
   end
 
   def test_5
+    skip
     airlines = ["Southwest", "Delta", "United", "Frontier"]
     # Iterate over the airlines array defined above to
     # create a hash with the name of the airline as the
@@ -78,6 +81,7 @@ class InjectPatternTest < Minitest::Test
   end
 
   def test_6
+    skip
     topping_calories = {
       pepperoni: 430,
       sausage: 400,
@@ -95,6 +99,7 @@ class InjectPatternTest < Minitest::Test
   end
 
   def test_7
+    skip
     elements = [["a", 1], ["b", 9], ["c", 21]]
     # Iterate over the elements array defined above
     # to find the sum of all the integers
@@ -106,6 +111,7 @@ class InjectPatternTest < Minitest::Test
   end
 
   def test_8
+    skip
     toppings = {
       pepperoni: {
         calories: 430,
@@ -138,6 +144,7 @@ class InjectPatternTest < Minitest::Test
   end
 
   def test_9
+    skip
     grades = {
       quizzes: [8, 5, 3, 6, 5],
       tests: [23, 21, 24],
@@ -155,6 +162,7 @@ class InjectPatternTest < Minitest::Test
   end
 
   def test_10
+    skip
     menu = {
       empanadas: {
         flavors: ["chicken", "potato", "steak", "veggie"],
